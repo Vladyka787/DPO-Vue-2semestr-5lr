@@ -1,4 +1,5 @@
 <template>
+<!--  Простой инпут для таких данных как Статус-->
   <div class="input-group">
     <label class="input-group-text">{{ spanValue }}</label>
     <select

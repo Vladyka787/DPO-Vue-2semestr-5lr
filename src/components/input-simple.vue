@@ -1,4 +1,5 @@
 <template>
+<!--  Простой ввод таких данных как Ссылка на фото и т.д.-->
   <div class="input-group mt-3">
     <span class="input-group-text">{{ spanValue }}</span>
     <input

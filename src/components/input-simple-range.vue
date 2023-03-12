@@ -1,4 +1,5 @@
 <template>
+<!--  Простой инпут для таких данных как ЗП-->
   <div class="input-group mt-3">
     <span class="input-group-text">{{ spanValue }}</span>
     <input

@@ -1,4 +1,5 @@
 <template>
+<!--  Выбор уровня образования-->
   <div class="input-group mt-3">
     <label class="input-group-text" aria-disabled="true">Образование</label>
     <select
@@ -10,6 +11,7 @@
       <option v-for="value in options" :key="value.id">{{ value.value }}</option>
     </select>
   </div>
+<!--  Показ доп полей-->
   <div
       v-if="toggleValue"
   >
@@ -22,6 +24,7 @@
       />
     </div>
     <div class="mt-3" style="display: flex; flex-direction: column;">
+<!--      Для получения большего количества доп полей-->
       <button
           style="align-self: flex-end;"
           class="btn btn-light"
@@ -69,6 +72,7 @@ export default {
     }
   },
   methods: {
+    // Обработка ввода уровня образования
     inputSelectValue(event) {
       this.selectValue = event.target.value;
       if (this.selectValue === "Среднее") {
@@ -79,16 +83,19 @@ export default {
 
       this.$emit('getSelect', this.selectValue);
     },
+    // Добавление дополнительных полей
     addEducation() {
       this.educations.push({id: this.id_counter});
       this.id_counter++;
     },
+    // Удаление полей
     deleteEducation(idEducation) {
       this.educations = this.educations.filter(post => post.id !== idEducation);
       this.resultEducation = this.resultEducation.filter(post => post.id !== idEducation);
 
       this.$emit('returnAllEducation', this.resultEducation);
     },
+    // Вывод результатов выше
     processingResult(education) {
       this.resultEducation = this.resultEducation.filter(post => post.id !== education.id);
       this.resultEducation.push(education);

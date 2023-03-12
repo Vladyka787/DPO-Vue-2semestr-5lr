@@ -1,4 +1,5 @@
 <template>
+<!--  Ввод др-->
   <div class="input-group mt-3">
     <span class="input-group-text">Дата рождения</span>
     <input
@@ -24,6 +25,7 @@ export default {
     }
   },
   methods: {
+    // Обработка ввода др и посылка данных наверх
     inputBirthdate(event) {
       this.birthdate = event.target.value;
 

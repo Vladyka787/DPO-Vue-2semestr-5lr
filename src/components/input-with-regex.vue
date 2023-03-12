@@ -1,4 +1,5 @@
 <template>
+  <!--  ввод с проверкой таких данных как Профессия, имейла и т.д.-->
   <div class="input-group mt-3">
     <span class="input-group-text">{{ spanValue }}</span>
     <input

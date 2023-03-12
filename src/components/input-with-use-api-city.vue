@@ -1,4 +1,5 @@
 <template>
+<!--  Ввод города-->
   <div class="input-group mt-3">
     <span class="input-group-text">Город</span>
     <input
@@ -31,13 +32,14 @@ export default {
       cities: [],
       error_city: "",
       url_city_begin: "https://api.vk.com/method/database.getCities?access_token=",
-      token: "",
+      token: process.env.VUE_APP_TOKEN,
       url_city_end: "&country_id=1&v=5.131&q=",
       city: "",
       id_city: "",
     }
   },
   methods: {
+    // Обработка ввода города
     inputCity(event) {
       let str = event.target.value;
 
@@ -71,6 +73,7 @@ export default {
       this.$emit('getIdCity', this.id_city);
       this.$emit('getData', this.city);
     },
+    // Получение списка городов с помощью апи
     getCity() {
       jsonp(this.url_city_begin + this.token + this.url_city_end + this.city)
           .then(response => {

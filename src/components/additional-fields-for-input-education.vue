@@ -1,6 +1,7 @@
 <template>
   <div :key=id>
     <div v-if="del" class="mb-3" style="display: flex; flex-direction: column;">
+<!--      Удаление блока доп полей для образования-->
       <button
           @click="deleteEducation"
           class="btn btn-danger"
@@ -9,6 +10,8 @@
         X
       </button>
     </div>
+<!--    Блок доп полей для образования-->
+<!--    Ввод учебное заведение-->
     <div class="input-group">
       <span class="input-group-text">Учебное заведение</span>
       <input
@@ -88,7 +91,7 @@ export default {
     return {
       educational_institutions: [],
       url_educational_institution_begin: "https://api.vk.com/method/database.getUniversities?access_token=",
-      token: "",
+      token: process.env.VUE_APP_TOKEN,
       url_educational_institution_1: "&country_id=1&city_id=",
       url_educational_institution_2: "&country_id=1",
       url_educational_institution_end: "&v=5.131&q=",
@@ -201,15 +204,18 @@ export default {
 
       this.returnResult();
     },
+    // Получение списка учебных заведений с помощью апи
     getInstitutions() {
       jsonp(this.url_educational_institution_begin + this.token + this.url_educational_institution_1 + this.id_city + this.url_educational_institution_end + this.educational_institution)
           .then(response => {
             this.educational_institutions = response.response.items;
           });
     },
+    // удалить образование
     deleteEducation() {
       this.$emit('deleteEducation', this.id);
     },
+    // вернуть данные выше
     returnResult() {
       this.$emit('getResult', {
         id: this.id,

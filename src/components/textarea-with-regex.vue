@@ -1,4 +1,5 @@
 <template>
+<!--  Поле для ввода большого объема данных с проверкой-->
   <div class="input-group mt-3">
     <span class="input-group-text">{{ spanValue }}</span>
     <textarea
